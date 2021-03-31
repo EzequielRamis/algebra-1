@@ -9,6 +9,8 @@
   negativos o 0.
 -}
 
+module Clases.Clase01 where
+
 {-
   01 - absoluto: calcula el valor absoluto de un número entero.
 -}
