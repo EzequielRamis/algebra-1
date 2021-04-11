@@ -17,6 +17,9 @@ sumatoria = operatoria (+)
 productoria :: (Num a, Eq a) => Natural -> Natural -> (Natural -> a) -> a
 productoria = operatoria (*)
 
+gauss :: Natural -> Natural
+gauss n = sumatoria 0 n id
+
 {-
   Ejercicios: otras sumatorias
 
@@ -120,7 +123,7 @@ sumaRacionales 0 _ = 0
 sumaRacionales _ 0 = 0
 sumaRacionales n m = sumatoria 1 n (\p -> sumatoria 1 m (\q -> float p / float q))
   where
-    float = fromInteger . naturalToInteger :: (Fractional a, Eq a) => Natural -> a
+    float = fromIntegral :: (Fractional a, Eq a) => Natural -> a
 
 {-
   04 - Implementar la siguiente función:
