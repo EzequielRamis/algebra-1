@@ -54,7 +54,7 @@ sumaDigitos n
   son iguales.
 -}
 
-digitosIguales :: Int -> Bool
+digitosIguales :: (Integral a) => a -> Bool
 digitosIguales n
   | n < 10 = True
   | otherwise = digitoUnidades n == digitoDecenas n && digitosIguales (div n 10)

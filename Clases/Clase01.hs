@@ -72,7 +72,7 @@ ambosSon0' _ _ = False
   múltiplo del segundo.
 -}
 
-esMultiploDe :: Int -> Int -> Bool
+esMultiploDe :: (Integral a) => a -> a -> Bool
 esMultiploDe m n = es0 $ mod m n
 
 {-
@@ -80,12 +80,12 @@ esMultiploDe m n = es0 $ mod m n
   unidades.
 -}
 
-digitoUnidades :: Int -> Int
+digitoUnidades :: (Integral a) => a -> a
 digitoUnidades n = mod n 10
 
 {-
   08 - digitoDecenas: dado un número natural, extrae su dígito de las decenas.
 -}
 
-digitoDecenas :: Int -> Int
+digitoDecenas :: (Integral a) => a -> a
 digitoDecenas n = digitoUnidades $ div n 10

@@ -72,7 +72,7 @@ sumaTerna (a, b, c) = a + b + c
   primer número par si es que hay alguno, y devuelve 4 si son todos impares.
 -}
 
-esPar :: Int -> Bool
+esPar :: (Integral a) => a -> Bool
 esPar n = esMultiploDe n 2
 
 posicPrimerPar :: Terna -> Int

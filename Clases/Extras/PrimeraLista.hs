@@ -49,7 +49,7 @@ factorial n = n * factorial (n - 1)
   05 - Escriba una función e_approx :: Integer -> Double tal que para cada
   entero no negativo n el valor de e_approx n sea
 
-  ∑ k=0 -> n = 1/k!
+  ∑ k=0 -> n: 1/k!
 -}
 
 eApprox :: Integer -> Double
