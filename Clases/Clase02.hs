@@ -10,8 +10,8 @@
 
 module Clases.Clase02 where
 
-import Clases.Clase01
-import Data.List
+import Clases.Clase01 (esMultiploDe)
+import Data.List (findIndex)
 
 {-
   01 - estanRelacionados: dados dos números reales, decide si están

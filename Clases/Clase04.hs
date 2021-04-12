@@ -2,9 +2,9 @@
 
 module Clases.Clase04 where
 
-import Clases.Clase02
-import Clases.Clase03
-import GHC.Natural
+import Clases.Clase02 (esPar)
+import Clases.Clase03 (digitosIguales)
+import GHC.Natural (Natural)
 
 operatoria :: (Num a, Eq a) => (a -> a -> a) -> Natural -> Natural -> (Natural -> a) -> a
 operatoria o i n f

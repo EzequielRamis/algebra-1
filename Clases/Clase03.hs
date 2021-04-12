@@ -2,7 +2,7 @@
 
 module Clases.Clase03 where
 
-import Clases.Clase01
+import Clases.Clase01 (digitoDecenas, digitoUnidades)
 
 {-
   01 - Escribir una función para determinar si un número natural es múltiplo de
