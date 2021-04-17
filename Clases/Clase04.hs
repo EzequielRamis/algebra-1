@@ -6,7 +6,7 @@ import Clases.Clase02 (esPar)
 import Clases.Clase03 (digitosIguales)
 import GHC.Natural (Natural)
 
-operatoria :: (Num a, Eq a) => (a -> a -> a) -> Natural -> Natural -> (Natural -> a) -> a
+operatoria :: (Integral b) => (a -> a -> a) -> b -> b -> (b -> a) -> a
 operatoria o i n f
   | i == n = f n
   | otherwise = operatoria o i (n - 1) f `o` f n
