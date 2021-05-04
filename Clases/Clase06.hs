@@ -57,7 +57,7 @@ pares (x : xs)
   elemento en la lista (de haberla).
 -}
 
-quitar :: Int -> [Int] -> [Int]
+quitar :: Eq a => a -> [a] -> [a]
 quitar _ [] = []
 quitar e (x : xs)
   | e == x = xs
@@ -68,7 +68,7 @@ quitar e (x : xs)
   del elemento en la lista (de haberla).
 -}
 
-quitarTodas :: Int -> [Int] -> [Int]
+quitarTodas :: Eq a => a -> [a] -> [a]
 quitarTodas _ [] = []
 quitarTodas e (x : xs)
   | e == x = quitarTodas e xs
@@ -89,7 +89,7 @@ hayRepetidos (x : y : xs) = x == y || hayRepetidos (y : xs)
   primera aparición de cada elemento, eliminando las repeticiones adicionales.
 -}
 
-eliminarRepetidosAlFinal :: [Int] -> [Int]
+eliminarRepetidosAlFinal :: Eq a => [a] -> [a]
 eliminarRepetidosAlFinal [] = []
 eliminarRepetidosAlFinal (x : xs) = x : eliminarRepetidosAlFinal (quitarTodas x xs)
 
@@ -110,8 +110,7 @@ eliminarRepetidosAlInicio xs = eliminarRepetidosAlInicio (quitarTodas lst rst) +
   vacía.
 -}
 
-maximo :: [Int] -> Int
-maximo [] = 0
+maximo :: Ord a => [a] -> a
 maximo [x] = x
 maximo (x : y : xs)
   | x > y = maximo $ x : xs
@@ -121,7 +120,8 @@ maximo (x : y : xs)
   12 - ordenar :: [Int] -> [Int] que ordena los elementos de forma creciente.
 -}
 
-ordenar :: [Int] -> [Int]
+ordenar :: Ord a => [a] -> [a]
+ordenar [] = []
 ordenar [x] = [x]
 ordenar xs = ordenar (quitar maxi xs) ++ [maxi]
   where
