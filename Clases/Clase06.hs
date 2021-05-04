@@ -29,7 +29,6 @@ sumarN n (x : xs) = (n + x) : sumarN n xs
 -}
 
 sumarElPrimero :: [Int] -> [Int]
-sumarElPrimero [] = []
 sumarElPrimero xs = sumarN (head xs) xs
 
 {-
