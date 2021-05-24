@@ -14,7 +14,7 @@ operatoria o i n f
 sumatoria :: (Num a, Eq a) => Natural -> Natural -> (Natural -> a) -> a
 sumatoria = operatoria (+)
 
-productoria :: (Num a, Eq a) => Natural -> Natural -> (Natural -> a) -> a
+productoria :: (Integral n, Num a, Eq a) => n -> n -> (n -> a) -> a
 productoria = operatoria (*)
 
 gauss :: Natural -> Natural
@@ -74,7 +74,7 @@ f4 n q = sumatoria n (2 * n) (\i -> q ^ i)
   Para estos casos podemos utilizar la función fromIntegral :: Int -> Float.
 -}
 
-factorial :: Natural -> Natural
+factorial :: Integral n => n -> n
 factorial 0 = 1
 factorial n = productoria 1 n id
 
