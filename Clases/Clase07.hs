@@ -61,10 +61,10 @@ union' a b = a ++ b
   devuelve la interesección entre ellos.
 -}
 
-interseccion :: Set Int -> Set Int -> Set Int
+interseccion :: Integral n => Set n -> Set n -> Set n
 interseccion a b = normalizar $ interseccion' a b
 
-interseccion' :: Set Int -> Set Int -> Set Int
+interseccion' :: Integral n => Set n -> Set n -> Set n
 interseccion' [] _ = [] -- ∀A: A ⋂ ∅ = ∅
 interseccion' (a : as) b
   | pertenece a b = a : interseccion' as b

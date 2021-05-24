@@ -15,7 +15,7 @@ module Clases.Clase01 where
   01 - absoluto: calcula el valor absoluto de un número entero.
 -}
 
-absoluto :: Float -> Float
+absoluto :: Integral n => n -> n
 absoluto n
   | n >= 0 = n
   | otherwise = - n
@@ -25,19 +25,19 @@ absoluto n
   números enteros.
 -}
 
-maximo :: Float -> Float -> Float
+maximo :: Integral n => n -> n -> n
 maximo m n
   | m >= n = m
   | otherwise = n
 
-maximoAbsoluto :: Float -> Float -> Float
+maximoAbsoluto :: Integral n => n -> n -> n
 maximoAbsoluto m n = maximo (absoluto m) (absoluto n)
 
 {-
   03 - maximo3: devuelve el máximo entre tres números enteros.
 -}
 
-maximo3 :: Float -> Float -> Float -> Float
+maximo3 :: Integral n => n -> n -> n -> n
 maximo3 m n p = maximo m $ maximo n p
 
 {-
