@@ -44,12 +44,12 @@ posiblesJugadas = posiblesJugadasDesde 1
 
 posiblesJugadasDesde :: Indice -> Posicion -> [Jugada]
 posiblesJugadasDesde _ [] = []
-posiblesJugadasDesde i [p] = jugadaParticular (i, p)
-posiblesJugadasDesde i (p : ps) = jugadaParticular (i, p) ++ posiblesJugadasDesde (i + 1) ps
+posiblesJugadasDesde i [p] = posiblesJugadasEnPila (i, p)
+posiblesJugadasDesde i (p : ps) = posiblesJugadasEnPila (i, p) ++ posiblesJugadasDesde (i + 1) ps
 
-jugadaParticular :: Jugada -> [Jugada]
-jugadaParticular (i, 1) = [(i, 1)]
-jugadaParticular (i, p) = jugadaParticular (i, p - 1) ++ [(i, p)]
+posiblesJugadasEnPila :: Jugada -> [Jugada]
+posiblesJugadasEnPila (i, 1) = [(i, 1)]
+posiblesJugadasEnPila (i, p) = posiblesJugadasEnPila (i, p - 1) ++ [(i, p)]
 
 {-
   03 - Escribir la función
