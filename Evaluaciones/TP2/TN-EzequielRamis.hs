@@ -22,11 +22,11 @@ jugar = jugarDesde 1
 
 jugarDesde :: Pila -> Posicion -> Jugada -> Posicion
 jugarDesde i (p : ps) j
-  | estaEnPosicion && pilaVacia = ps
-  | estaEnPosicion = piedrasRestantes : ps
+  | estaEnPila && pilaVacia = ps
+  | estaEnPila = piedrasRestantes : ps
   | otherwise = p : jugarDesde (i + 1) ps j
   where
-    estaEnPosicion = fst j == i
+    estaEnPila = fst j == i
     pilaVacia = piedrasRestantes == 0
     piedrasRestantes = p - snd j
 
