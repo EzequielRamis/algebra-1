@@ -2,11 +2,11 @@
 
 type Piedras = Int
 
-type Indice = Int
+type Pila = Int
 
 type Posicion = [Piedras]
 
-type Jugada = (Indice, Piedras)
+type Jugada = (Pila, Piedras)
 
 {-
   01 - Escribir la función
@@ -20,7 +20,7 @@ type Jugada = (Indice, Piedras)
 jugar :: Posicion -> Jugada -> Posicion
 jugar = jugarDesde 1
 
-jugarDesde :: Indice -> Posicion -> Jugada -> Posicion
+jugarDesde :: Pila -> Posicion -> Jugada -> Posicion
 jugarDesde i (p : ps) j
   | estaEnPosicion && pilaVacia = ps
   | estaEnPosicion = piedrasRestantes : ps
@@ -42,7 +42,7 @@ jugarDesde i (p : ps) j
 posiblesJugadas :: Posicion -> [Jugada]
 posiblesJugadas = posiblesJugadasDesde 1
 
-posiblesJugadasDesde :: Indice -> Posicion -> [Jugada]
+posiblesJugadasDesde :: Pila -> Posicion -> [Jugada]
 posiblesJugadasDesde _ [] = []
 posiblesJugadasDesde i [p] = posiblesJugadasEnPila (i, p)
 posiblesJugadasDesde i (p : ps) = posiblesJugadasEnPila (i, p) ++ posiblesJugadasDesde (i + 1) ps
@@ -63,8 +63,7 @@ esPosicionGanadora :: Posicion -> Bool
 esPosicionGanadora p = existeSigPosicionPerdedora p (posiblesJugadas p)
 
 existeSigPosicionPerdedora :: Posicion -> [Jugada] -> Bool
--- Como ya no hay jugadas disponibles a ejecutar, no es posible obtener una
--- siguiente posición, por lo tanto es falsa por default
+-- Como ya no hay jugadas disponibles a ejecutar, es falsa por default
 existeSigPosicionPerdedora _ [] = False
 existeSigPosicionPerdedora p (j : js) = esSigPosicionPerdedora p j || existeSigPosicionPerdedora p js
 
@@ -87,15 +86,14 @@ jugadaGanadora :: Posicion -> Jugada
 jugadaGanadora p = head (jugadasGanadoras p)
 
 jugadasGanadoras :: Posicion -> [Jugada]
-jugadasGanadoras p = sigPosicionesPerdedoras p (posiblesJugadas p)
+jugadasGanadoras p = jugadasGanadorasCon (posiblesJugadas p) p
 
-sigPosicionesPerdedoras :: Posicion -> [Jugada] -> [Jugada]
--- Como ya no hay jugadas disponibles a ejecutar, no es posible obtener una
--- siguiente posición, por lo tanto se termina la recursión
-sigPosicionesPerdedoras _ [] = []
-sigPosicionesPerdedoras p (j : js)
-  | esSigPosicionPerdedora p j = j : sigPosicionesPerdedoras p js
-  | otherwise = sigPosicionesPerdedoras p js
+jugadasGanadorasCon :: [Jugada] -> Posicion -> [Jugada]
+-- Como ya no hay jugadas disponibles a ejecutar, se termina la recursión
+jugadasGanadorasCon [] _ = []
+jugadasGanadorasCon (j : js) p
+  | esSigPosicionPerdedora p j = j : jugadasGanadorasCon js p
+  | otherwise = jugadasGanadorasCon js p
 
 {-
   05 - Escribir la función
