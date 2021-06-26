@@ -1,0 +1,33 @@
+Aprobado+
+
+Buen TP!
+
+Está muy bien agregar nuevos tipos de datos para hacer el código más claro!
+
+Por ahí a Pila lo llamaría IndicePila o PosicionPila
+Y a Piedras lo llamaría CantidadPiedras.
+O algo así, si no me cuesta más entender cuál es cuál.
+
+L21 Esto anda por cuestiones que usualmente no vemos en esta materia (o que se ven en la
+clase de alto orden). Estás evaluando parcialmente la función jugarDesde, eso tiene tipo
+Posicion -> Jugada -> Posicion y por lo tanto podés asignarlo como el valor de jugar.
+
+L20 Es un enfoque muy prolijo! Si quisieras emprolijarlo aún más, podés usar la misma
+idea sin una función auxiliar para implementar jugar con tres guardas idénticas a las que
+usaste.
+
+L51 Es más lindo poner caso base posiblesJugadasEnPila (i,0) = []
+
+L52 No creo que notemos demasiado la diferencia, pero por como se construyen las listas
+en haskell es más rápido agregar un elemento al principio con : que concatenar una lista
+de un elemento al final con ++. Lo podés pensar así: si tenés una pila de libros a la que
+vas agregando libros, requiere menos esfuerzo poner el libro nuevo arriba de todo que
+levantar toda la pila para poner un libro al fondo.
+
+L71-74 No tiene sentido ponerle otro nombre a jugar. Te conviene usar jugar directamente
+en la línea 71 y sacar siguientePosicion
+
+L88 Buenísimo que hayas implementado jugadasGanadoras y resuelvas el 4 y el 5 a partir de
+eso!
+
+
